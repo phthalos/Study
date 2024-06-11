@@ -23,6 +23,7 @@ void Init()
     cout << "===== 단어 시험 프로그램 =====\n\n";
     cout << "단어의 개수를 입력하세요: ";
     cin >> numOfVoca;
+    cin.ignore();
     vocaList.resize(numOfVoca);
     defList.resize(numOfVoca);
     cout << "\n";
@@ -32,14 +33,15 @@ void Init()
     for (int i = 0; i < numOfVoca; i++)
     {
         cout << i + 1 << ". ";
-        cin >> vocaList[i];
+        getline(cin, vocaList[i]);
     }
     cout << "\n";
     cout << "단어의 의미를 입력하세요.\n";
     for (int i = 0; i < numOfVoca; i++)
     {
         cout << i + 1 << ". " << vocaList[i] << " : ";
-        cin >> defList[i];
+        getline(cin, defList[i]);
+        // cin >> defList[i];
     }
     Menu(vocaList, defList, numOfVoca);
 }
@@ -58,6 +60,7 @@ void Menu(vector<string> vocaList, vector<string> defList, int numOfVoca)
         cout << "\n";
         cout << "메뉴 번호를 입력해주세요: ";
         cin >> menu;
+        cin.ignore();
         cout << "\n";
         if (menu == 1)
             Test(vocaList, defList, numOfVoca);
@@ -111,7 +114,8 @@ void Test(vector<string> vocaList, vector<string> defList, int numOfVoca)
             cout << i + 1 << ". ";
             string def;
             cout << vocaList[num] << " - ";
-            cin >> def;
+            getline(cin, def);
+            // cin >> def;
             if (defList[num] == def)
             {
                 check[num] = true;
@@ -124,7 +128,8 @@ void Test(vector<string> vocaList, vector<string> defList, int numOfVoca)
             cout << i + 1 << ". ";
             string voca;
             cout << defList[num] << " - ";
-            cin >> voca;
+            getline(cin, voca);
+            // cin >> voca;
             if (vocaList[num] == voca)
             {
                 check[num] = true;
